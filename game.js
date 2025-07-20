@@ -54,6 +54,54 @@ class ParkingGame {
             this.keys[e.code] = false;
             e.preventDefault();
         });
+        
+        // 防止觸控事件的預設行為
+        document.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+        
+        document.addEventListener('touchend', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+        
+        document.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+    }
+    
+    // 手機觸控控制方法
+    mobileControlStart(direction) {
+        switch(direction) {
+            case 'forward':
+                this.keys['ArrowUp'] = true;
+                break;
+            case 'reverse':
+                this.keys['ArrowDown'] = true;
+                break;
+            case 'left':
+                this.keys['ArrowLeft'] = true;
+                break;
+            case 'right':
+                this.keys['ArrowRight'] = true;
+                break;
+        }
+    }
+    
+    mobileControlEnd(direction) {
+        switch(direction) {
+            case 'forward':
+                this.keys['ArrowUp'] = false;
+                break;
+            case 'reverse':
+                this.keys['ArrowDown'] = false;
+                break;
+            case 'left':
+                this.keys['ArrowLeft'] = false;
+                break;
+            case 'right':
+                this.keys['ArrowRight'] = false;
+                break;
+        }
     }
     
     showInstructions() {
