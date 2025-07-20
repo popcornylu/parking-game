@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路邊停車挑戰遊戲</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #2c3e50;
+            color: white;
+            overflow: hidden;
+        }
+        
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: #34495e;
+        }
+        
+        #gameCanvas {
+            display: block;
+            background: #27ae60;
+            cursor: none;
+        }
+        
+        #ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+        
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 100;
+        }
+        
+        .button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .button:hover {
+            background: #2980b9;
+        }
+        
+        .button:active {
+            background: #1abc9c;
+        }
+        
+        #levelInfo {
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        #instructions {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.9);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            z-index: 200;
+            display: none;
+        }
+        
+        .key {
+            display: inline-block;
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 5px 10px;
+            margin: 2px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="ui">
+            <div id="levelInfo">
+                <h2 id="levelTitle">路邊停車挑戰</h2>
+                <p id="levelDesc">準備開始第一關：倒車入庫</p>
+                <p>分數: <span id="score">0</span></p>
+                <p>時間: <span id="timer">--:--</span></p>
+            </div>
+        </div>
+        
+        <div id="controls">
+            <div>
+                <span class="key">↑</span> 前進 
+                <span class="key">↓</span> 後退 
+                <span class="key">←</span> 左轉 
+                <span class="key">→</span> 右轉
+            </div>
+            <div style="margin-top: 10px;">
+                <button class="button" onclick="game.startLevel(1)">第一關: 倒車入庫</button>
+                <button class="button" onclick="game.startLevel(2)">第二關: 路邊停車</button>
+                <button class="button" onclick="game.resetLevel()">重新開始</button>
+            </div>
+        </div>
+        
+        <div id="instructions">
+            <h3>遊戲說明</h3>
+            <p>使用方向鍵控制車輛移動</p>
+            <p>第一關：將車輛倒車停入指定停車格</p>
+            <p>第二關：在路邊找到合適空間並停車</p>
+            <p>避免撞到障礙物或其他車輛！</p>
+            <button class="button" onclick="hideInstructions()">開始遊戲</button>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
