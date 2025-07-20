@@ -119,9 +119,9 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr;
-            gap: 10px;
+            gap: 5px;
             width: 150px;
-            height: 150px;
+            height: 120px;
         }
         
         .control-btn {
@@ -147,44 +147,133 @@
         .forward { grid-column: 2; grid-row: 1; }
         .left { grid-column: 1; grid-row: 2; }
         .right { grid-column: 3; grid-row: 2; }
-        .reverse { grid-column: 2; grid-row: 3; }
+        .reverse { grid-column: 2; grid-row: 2; }
         
         /* 手機螢幕適配 */
         @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+            }
+            
+            #gameContainer {
+                min-height: 100vh;
+                height: auto;
+            }
+            
             #mobileControls {
                 display: block;
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .control-pad {
+                width: 120px;
+                height: 100px;
+                gap: 5px;
+            }
+            
+            .control-btn {
+                font-size: 16px;
             }
             
             #controls {
-                bottom: 180px;
+                position: fixed;
+                bottom: 140px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 95%;
+                max-width: 400px;
+            }
+            
+            #controls > div:first-child {
+                display: none;
+            }
+            
+            #controls .button {
+                display: block;
+                width: 100%;
+                margin: 5px 0;
+                padding: 12px;
+                font-size: 16px;
+                box-sizing: border-box;
             }
             
             #ui {
                 top: 10px;
                 left: 10px;
                 right: 10px;
+                position: fixed;
             }
             
             #levelInfo {
-                padding: 10px;
-                font-size: 14px;
+                padding: 8px;
+                font-size: 12px;
+                max-width: 200px;
             }
             
             #levelInfo h2 {
-                margin: 0 0 10px 0;
-                font-size: 18px;
+                margin: 0 0 5px 0;
+                font-size: 16px;
+            }
+            
+            #levelInfo p {
+                margin: 2px 0;
+            }
+            
+            #version {
+                top: 10px;
+                right: 10px;
+                font-size: 10px;
+                padding: 3px 6px;
             }
             
             #instructions {
-                padding: 20px;
+                padding: 15px;
                 width: 90%;
-                max-width: 400px;
+                max-width: 350px;
+                max-height: 80vh;
+                overflow-y: auto;
             }
             
-            .button {
-                padding: 8px 15px;
+            #instructions h3 {
+                margin-top: 0;
+                font-size: 18px;
+            }
+            
+            #instructions p {
                 font-size: 14px;
-                margin: 3px;
+                margin: 8px 0;
+            }
+        }
+        
+        /* 更小螢幕（iPhone SE等）的特殊適配 */
+        @media (max-width: 390px) and (max-height: 700px) {
+            #controls {
+                bottom: 120px;
+            }
+            
+            .control-pad {
+                width: 100px;
+                height: 80px;
+                gap: 4px;
+            }
+            
+            .control-btn {
+                font-size: 14px;
+            }
+            
+            #mobileControls {
+                bottom: 5px;
+                right: 5px;
+            }
+            
+            #levelInfo {
+                font-size: 11px;
+                padding: 6px;
+            }
+            
+            #levelInfo h2 {
+                font-size: 14px;
             }
         }
     </style>
@@ -202,7 +291,7 @@
             </div>
         </div>
         
-        <div id="version">v1.4</div>
+        <div id="version">v1.6</div>
         
         <div id="controls">
             <div>
@@ -254,6 +343,6 @@
         </div>
     </div>
     
-    <script src="game.js?v=1.4"></script>
+    <script src="game.js?v=1.6"></script>
 </body>
 </html>
