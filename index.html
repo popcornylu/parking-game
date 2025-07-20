@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>路邊停車挑戰遊戲</title>
     <style>
         body {
@@ -199,7 +202,7 @@
             </div>
         </div>
         
-        <div id="version">v1.2</div>
+        <div id="version">v1.4</div>
         
         <div id="controls">
             <div>
@@ -209,9 +212,9 @@
                 <span class="key">→</span> 右轉
             </div>
             <div style="margin-top: 10px;">
-                <button class="button" onclick="game.startLevel(1)">第一關: 倒車入庫</button>
-                <button class="button" onclick="game.startLevel(2)">第二關: 路邊停車</button>
-                <button class="button" onclick="game.resetLevel()">重新開始</button>
+                <button class="button" onclick="game.startLevel(1)" ontouchend="game.startLevel(1)">第一關: 倒車入庫</button>
+                <button class="button" onclick="game.startLevel(2)" ontouchend="game.startLevel(2)">第二關: 路邊停車</button>
+                <button class="button" onclick="game.resetLevel()" ontouchend="game.resetLevel()">重新開始</button>
             </div>
         </div>
         
@@ -221,7 +224,7 @@
             <p>第一關：將車輛倒車停入指定停車格</p>
             <p>第二關：在路邊找到合適空間並停車</p>
             <p>避免撞到障礙物或其他車輛！</p>
-            <button class="button" onclick="hideInstructions()">開始遊戲</button>
+            <button class="button" onclick="hideInstructions()" ontouchend="hideInstructions()">開始遊戲</button>
         </div>
         
         <!-- 手機觸控控制器 -->
@@ -251,6 +254,6 @@
         </div>
     </div>
     
-    <script src="game.js"></script>
+    <script src="game.js?v=1.4"></script>
 </body>
 </html>
