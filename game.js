@@ -55,16 +55,16 @@ class ParkingGame {
             e.preventDefault();
         });
         
-        // 防止觸控事件的預設行為
-        document.addEventListener('touchstart', (e) => {
+        // 只在遊戲畫布上防止觸控事件的預設行為
+        this.canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
         }, { passive: false });
         
-        document.addEventListener('touchend', (e) => {
+        this.canvas.addEventListener('touchend', (e) => {
             e.preventDefault();
         }, { passive: false });
         
-        document.addEventListener('touchmove', (e) => {
+        this.canvas.addEventListener('touchmove', (e) => {
             e.preventDefault();
         }, { passive: false });
     }
